@@ -1,0 +1,11 @@
+{
+  "name": "pub-quiz-nodejs",
+  "version": "1.0.0",
+  "description": "Learning NodeJS with creation of a fun project - managing a pub quiz",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Noam Kritenberg",
+  "license": "ISC"
+}
