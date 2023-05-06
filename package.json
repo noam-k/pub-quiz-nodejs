@@ -7,5 +7,9 @@
     "test": "test"
   },
   "author": "Noam Kritenberg",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "csv-parse": "^5.3.10",
+    "csv-stringify": "^6.3.4"
+  }
 }
