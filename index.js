@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
-const parse = require('csv-parse');
-const stringify = require('csv-stringify');
+const { parse } = require('csv-parse/sync');
+const { stringify } = require('csv-stringify/sync');
 const port = 3000;
 
 const server = http.createServer((req, res) => {
@@ -12,7 +12,6 @@ const server = http.createServer((req, res) => {
     });
     req.on('end', () => {
       try {
-        console.log('parsing request...');
         const data = JSON.parse(body);
         const userId = data.userId;
         const qaPairs = data.qaPairs;
