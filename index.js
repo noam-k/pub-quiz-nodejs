@@ -42,6 +42,22 @@ const server = http.createServer((req, res) => {
         res.end('Bad Request');
       }
     });
+  } else if (req.method === 'GET' && req.url === '/delete_data') {
+    try {
+      const csvFilePath = './data.csv'
+      if (fs.existsSync(csvFilePath)) {
+        fs.unlinkSync(csvFilePath);
+        console.log('csv data deleted');
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      const responseBody = { message: 'data deleted' };
+      res.write(JSON.stringify(responseBody));
+      res.end();
+    } catch (error) {
+      console.log(error);
+      res.writeHead(500, {'Content-Type': 'text/plain'});
+      res.end('Server Error while deleting data');
+    }
   } else {
     res.writeHead(404, { 'Content-Type': 'text/plain' });
     res.end('404 Not Found');
