@@ -7,6 +7,11 @@ const app = express();
 
 app.listen(3000);
 
+app.use((req, res, next) => {
+    console.log('Incoming request; URL: %s; Method: %s', req.url, req.method);
+    next();
+})
+
 app.get('/try', (req, res) => {
     res.send('<p> Hello World1 </p>')
 })
