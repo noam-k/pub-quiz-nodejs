@@ -10,10 +10,6 @@ app.listen(3000);
 
 app.use(morgan('dev'));
 
-app.get('/try', (req, res) => {
-    res.send('<p> Hello World1 </p>')
-})
-
 app.get('/delete_data', (req, res) => {
     try {
         const csvFilePath = './data.csv'
