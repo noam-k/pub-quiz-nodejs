@@ -11,57 +11,39 @@ app.listen(3000);
 
 app.use(morgan('dev')); // prints to console data about incoming HTTP requests
 
-app.get('/delete_data', (req, res) => {
-    try {
-        const csvFilePath = './data.csv'
-        if (fs.existsSync(csvFilePath)) {
-          fs.unlinkSync(csvFilePath);
-          console.log('csv data deleted');
-        }
-        const responseBody = { message: 'data deleted' };
-        res.send(JSON.stringify(responseBody));
-      } catch (error) {
-        console.log(error);
-        res.send('Server Error while deleting data');
-      }
+app.get('/about', (req, res) => {
+    res.render('about');
 })
 
-app.post('/api', (req, res) => {
-    let body = '';
-    req.on('data', chunk => {
-        body += chunk.toString();
-    });
-    req.on('end', () => {
-        try {
-        const data = JSON.parse(body);
-        const userId = data.userId;
-        const qaPairs = data.qaPairs;
-        console.log(`Received data from user ${userId}:`, qaPairs);
-        
-        const csvFilePath = './data.csv';
-        let fileData;
-        if (fs.existsSync(csvFilePath)) {
-            fileData = fs.readFileSync(csvFilePath, 'utf-8');
-        } else {
-            fileData = stringify([['User ID', 'Question', 'Answer']]);
-        }
-        const records = parse(fileData, { columns: true });
-        qaPairs.forEach(qaPair => {
-            const record = { 'User ID': userId, 'Question': qaPair.question, 'Answer': qaPair.answer };
-            records.push(record);
-        });
-        const newFileData = stringify(records, { header: true });
-        fs.writeFileSync(csvFilePath, newFileData);
+app.get('collect_answers', (req, res) => {
+    res.render('collect_answers');
+})
 
-        const responseBody = { message: 'Data received and processed successfully' };
-        res.send(JSON.stringify(responseBody));
-        } catch (error) {
-        console.log(error);
-        res.send('Bad Request');
-        }
-    });
+app.get('/how_to_use', (req, res) => {
+    res.render('how_to_use');
+})
+
+app.get('/', (req, res) => {
+    res.render('index');
+})
+
+app.get('/index', (req, res) => {
+    res.render('index');
+})
+
+
+app.get('new_question', (req, res) => {
+    res.render('new_question');
+})
+
+app.get('quiz_setup', (req, res) => {
+    res.render('quiz_setup');
+})
+
+app.get('score_board', (req, res) => {
+    res.render('score_board');
 })
 
 app.use((req, res) => {
-    res.status(404).sendFile('./404.html', {root: __dirname});
+    res.status(404).render('not_found');
 })
