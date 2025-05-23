@@ -5,6 +5,7 @@ const { parse } = require('csv-parse/sync');
 const morgan = require('morgan');
 
 const app = express();
+app.set('view engine', 'ejs');
 
 app.listen(3000);
 
