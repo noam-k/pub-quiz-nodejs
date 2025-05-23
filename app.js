@@ -8,7 +8,7 @@ const app = express();
 
 app.listen(3000);
 
-app.use(morgan('dev'));
+app.use(morgan('dev')); // prints to console data about incoming HTTP requests
 
 app.get('/delete_data', (req, res) => {
     try {
