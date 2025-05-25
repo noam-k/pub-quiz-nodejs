@@ -1,0 +1,16 @@
+<html lang="en"> 
+<%- include('./partials/header') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+    <h1> How to use this app</h1>
+    <p>
+        From the main page click on <div class="special-text">new quiz</div> where you can define a new game.
+        Setting up a quiz involves naming the teams and initialize the state (old quizes are deleted).
+        After hitting <div class="special-text">start</div> you can create a new question. In a followup screen you can give points to each team. <br/>
+        At any moment (technically, even before the first question) you can finalize the quiz by hitting <div class="special-text">finish quiz</div>
+        thereby going to the scoreboard.
+        You can start again at any time by going to the home page and hitting <div class="special-text">new quiz</div>.
+    </p>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>

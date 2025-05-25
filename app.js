@@ -15,7 +15,7 @@ app.get('/about', (req, res) => {
     res.render('about', {title: 'About'});
 })
 
-app.get('collect_answers', (req, res) => {
+app.get('/collect_answers', (req, res) => {
     res.render('collect_answers', {title: 'Answers'});
 })
 
@@ -31,15 +31,15 @@ app.get('/index', (req, res) => {
     res.render('index', {title: 'Welcome'});
 })
 
-app.get('new_question', (req, res) => {
+app.get('/new_question', (req, res) => {
     res.render('new_question', {title: 'Question'});
 })
 
-app.get('quiz_setup', (req, res) => {
+app.get('/quiz_setup', (req, res) => {
     res.render('quiz_setup', {title: 'Setup'});
 })
 
-app.get('score_board', (req, res) => {
+app.get('/score_board', (req, res) => {
     res.render('score_board', {title: 'Scores'});
 })
 
