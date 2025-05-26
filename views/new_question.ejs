@@ -1,0 +1,12 @@
+<html lang="en"> 
+<%- include('./partials/header') %>
+<body>
+    <%- include('./partials/nav.ejs') %>
+        <h1>Add a new question </h1>
+        <form action="/collect_answers" method="post">
+            <textarea name="question">Write your question here</textarea>
+            <button type="submit">save question</button>
+        </form>
+    <%- include('./partials/footer.ejs') %>
+</body>
+</html>
